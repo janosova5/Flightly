@@ -13,17 +13,73 @@ struct FlightListView: View {
     private let toDisplay = 5
 
     var body: some View {
-        // FIXME: layout
         NavigationView {
-            List(viewModel.flightViewModelList.prefix(toDisplay), id: \.id) { flightVM in
-                Text(flightVM.cityFrom + " - " + flightVM.cityTo)
-                Text(flightVM.countryFromName + " - " + flightVM.countryToName)
-                Text(flightVM.departureTimeFormatted + " - " + flightVM.arrivalTimeFormatted)
-                Text(flightVM.duration)
-                Text(flightVM.priceFormatted)
-            }.onAppear {
-                self.viewModel.loadFlights()
-            }.navigationBarTitle("Cheapest flights this month")
+            VStack(alignment: .leading) {
+                Text("Check the cheapest flights from Prague this month")
+                    .font(.subheadline)
+                    .padding(.leading)
+                List(viewModel.flightViewModelList.prefix(toDisplay), id: \.id) { flightVM in
+                    FlightCell(flightVM: flightVM)
+                }.onAppear {
+                    self.viewModel.loadFlights()
+                }.navigationBarTitle("Flight offers")
+            }.background(.cyan)
+        }
+    }
+}
+
+struct FlightCell: View {
+    var flightVM: FlightViewModel
+
+    var body: some View {
+        VStack {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(alignment: .center) {
+                    Image("plane")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 25, alignment: .center)
+                    Text(flightVM.destinationFrom)
+                        .font(.headline)
+                    Spacer()
+                    Image("right-arrow")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 35, alignment: .center)
+                    Spacer()
+                    Text(flightVM.destinationTo)
+                        .font(.headline)
+                }
+                HStack(alignment: .center) {
+                    Text(flightVM.departureTimeFormatted)
+                    Spacer()
+                    Text(flightVM.arrivalTimeFormatted)
+                }
+            }
+            HStack(alignment: .center, spacing: 16) {
+                VStack(alignment: .leading) {
+                    HStack(alignment: .center, spacing: 8) {
+                        Image("duration")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 25, alignment: .center)
+                        Text(flightVM.duration)
+                    }
+                    HStack(alignment: .center, spacing: 8) {
+                        Image("price")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25, height: 25, alignment: .center)
+                        Text(flightVM.priceFormatted)
+                            .font(.headline)
+                    }
+                }
+                Image("placeholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(10)
+                    .padding([.top, .bottom])
+            }
         }
     }
 }
