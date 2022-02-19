@@ -11,7 +11,7 @@ import SwiftUI
 struct FlightlyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FlightListView()
         }
     }
 }
