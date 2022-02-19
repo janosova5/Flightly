@@ -8,14 +8,14 @@
 import Foundation
 import Combine
 
-class FlightListViewModel: ObservableObject {
+final class FlightListViewModel: ObservableObject {
     private let flightOfferService = FlightOfferService()
 
     private var formattedDates: (String, String) {
         guard let interval = Calendar.current.dateInterval(of: .month, for: .now) else { return ("", "") }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        return (dateFormatter.string(from: interval.start), dateFormatter.string(from: interval.end))
+        let serviceDateFormatter = DateFormatter()
+        serviceDateFormatter.dateFormat = "dd/MM/yyyy"
+        return (serviceDateFormatter.string(from: interval.start), serviceDateFormatter.string(from: interval.end))
     }
 
     @Published var flightViewModelList: [FlightViewModel] = []

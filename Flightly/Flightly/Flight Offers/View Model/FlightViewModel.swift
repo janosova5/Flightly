@@ -11,6 +11,12 @@ struct FlightViewModel {
     private var flight: Flight
     private var currency: String
 
+    private var displayDateFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy, H:mm"
+        return dateFormatter
+    }
+
     init(flight: Flight, currency: String) {
         self.flight = flight
         self.currency = currency
@@ -20,20 +26,12 @@ struct FlightViewModel {
         return flight.id
     }
 
-    var cityFrom: String {
-        return flight.cityFrom
+    var destinationFrom: String {
+        return flight.cityFrom + " (" + flight.countryFrom.code + ")"
     }
 
-    var cityTo: String {
-        return flight.cityTo
-    }
-
-    var countryFromName: String {
-        return flight.countryFrom.name
-    }
-
-    var countryToName: String {
-        return flight.countryTo.name
+    var destinationTo: String {
+        return flight.cityTo + " (" + flight.countryTo.code + ")"
     }
 
     var duration: String {
@@ -41,11 +39,15 @@ struct FlightViewModel {
     }
 
     var departureTimeFormatted: String {
-        return String(flight.departureTime) // FIXME: format time
+        let timeInterval = TimeInterval(flight.departureTime)
+        let date = Date(timeIntervalSince1970: timeInterval)
+        return displayDateFormatter.string(from: date)
     }
 
     var arrivalTimeFormatted: String {
-        return String(flight.arrivalTime) // FIXME: format time
+        let timeInterval = TimeInterval(flight.arrivalTime)
+        let date = Date(timeIntervalSince1970: timeInterval)
+        return displayDateFormatter.string(from: date)
     }
 
     var priceFormatted: String {
