@@ -21,6 +21,7 @@ final class FlightListViewModel: ObservableObject {
     @Published var flightViewModelList: [FlightViewModel] = []
 
     var cancellable: AnyCancellable?
+    var isLoading: Bool = true
 
     func loadFlights() {
         cancellable = flightOfferService.loadFlights(
@@ -31,6 +32,7 @@ final class FlightListViewModel: ObservableObject {
                 self?.flightViewModelList = flightDataList.data.map {
                     FlightViewModel(flight: $0, currency: flightDataList.currency)
                 }
+                self?.isLoading = false
             }
         )
     }
