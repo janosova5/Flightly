@@ -9,7 +9,8 @@ import Foundation
 import Combine
 
 final class FlightListViewModel: ObservableObject {
-    private let flightOfferService = FlightOfferService()
+    private let today = Calendar.current.dateComponents([.day, .month, .year], from: .now)
+    private let numberOfFlightsToDisplay = 5
 
     private struct DepartureInterval {
         let startDate: String
@@ -27,6 +28,8 @@ final class FlightListViewModel: ObservableObject {
             endDate: serviceDateFormatter.string(from: interval.end)
         )
     }
+
+    private let flightOfferService = FlightOfferService()
 
     @Published var flightViewModelList: [FlightViewModel] = []
     @Published var error: KiwiError?
@@ -55,7 +58,8 @@ final class FlightListViewModel: ObservableObject {
     }
 
     private func handleResult(with result: FlightDataList) {
-        flightViewModelList = result.data.map {
+        let flightsToDisplay = flightsToDisplay(from: result)
+        flightViewModelList = flightsToDisplay.map {
             FlightViewModel(
                 flight: $0,
                 currency: result.currency,
@@ -70,5 +74,42 @@ final class FlightListViewModel: ObservableObject {
             return data
         }
         return nil
+    }
+
+    private func flightsToDisplay(from flightList: FlightDataList) -> ArraySlice<Flight> {
+        let newFlights = flightList.data.prefix(numberOfFlightsToDisplay)
+        
+        if let displayedFlights = DisplayedFlightsRepository.getData() {
+            if today != displayedFlights.dateOfUpdate {
+                let flightsToDisplay = flightList.data
+                    .filter { !displayedFlights.destinationsCityCodes.contains($0.cityCodeTo) }
+                    .prefix(numberOfFlightsToDisplay)
+
+                saveDisplayedFlights(flightsToDisplay)
+                return flightsToDisplay
+            } else {
+                updateDisplayedFlights(with: newFlights, displayedFlights)
+                return newFlights
+            }
+        }
+        saveDisplayedFlights(newFlights)
+        return newFlights
+    }
+
+    private func saveDisplayedFlights(_ data: ArraySlice<Flight>) {
+        let cityToCodes = data.map { $0.cityCodeTo }
+        let displayedFlightsModel = DisplayedFlightsModel(dateOfUpdate: today, destinationsCityCodes: cityToCodes)
+        DisplayedFlightsRepository.save(displayedFlightsModel)
+    }
+
+    private func updateDisplayedFlights(with newFlights: ArraySlice<Flight>, _ displayedFlights: DisplayedFlightsModel) {
+        let newDestinationCodes = newFlights
+            .filter{ !displayedFlights.destinationsCityCodes.contains($0.cityCodeTo) }
+            .map { $0.cityCodeTo }
+        
+        if !newDestinationCodes.isEmpty {
+            let updatedFlightsModel = DisplayedFlightsModel(dateOfUpdate: today, destinationsCityCodes: newDestinationCodes)
+            DisplayedFlightsRepository.save(updatedFlightsModel)
+        }
     }
 }

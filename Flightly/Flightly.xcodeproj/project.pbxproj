@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4237B19327C1BE140067EC59 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B19227C1BE140067EC59 /* NetworkService.swift */; };
 		4237B19727C252A70067EC59 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B19627C252A70067EC59 /* ErrorView.swift */; };
+		4237B19A27C282B50067EC59 /* DisplayedFlightsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B19927C282B50067EC59 /* DisplayedFlightsModel.swift */; };
+		4237B19D27C29C280067EC59 /* DisplayedFlightsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B19C27C29C280067EC59 /* DisplayedFlightsRepository.swift */; };
 		42FEA65C27C1098F00A42B00 /* FlightlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FEA65B27C1098F00A42B00 /* FlightlyApp.swift */; };
 		42FEA65E27C1098F00A42B00 /* FlightListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FEA65D27C1098F00A42B00 /* FlightListView.swift */; };
 		42FEA66027C1099400A42B00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42FEA65F27C1099400A42B00 /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 /* Begin PBXFileReference section */
 		4237B19227C1BE140067EC59 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		4237B19627C252A70067EC59 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		4237B19927C282B50067EC59 /* DisplayedFlightsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayedFlightsModel.swift; sourceTree = "<group>"; };
+		4237B19C27C29C280067EC59 /* DisplayedFlightsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayedFlightsRepository.swift; sourceTree = "<group>"; };
 		42FEA65827C1098F00A42B00 /* Flightly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flightly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FEA65B27C1098F00A42B00 /* FlightlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightlyApp.swift; sourceTree = "<group>"; };
 		42FEA65D27C1098F00A42B00 /* FlightListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightListView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,14 @@
 			path = "View Components";
 			sourceTree = "<group>";
 		};
+		4237B19B27C29C110067EC59 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				4237B19C27C29C280067EC59 /* DisplayedFlightsRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		42FEA64F27C1098F00A42B00 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +163,7 @@
 		42FEA68827C10AB000A42B00 /* Flight Offers */ = {
 			isa = PBXGroup;
 			children = (
+				4237B19B27C29C110067EC59 /* Repository */,
 				42FEA69027C10F4B00A42B00 /* Service */,
 				42FEA68B27C10B2500A42B00 /* View Model */,
 				42FEA68A27C10AEA00A42B00 /* Model */,
@@ -171,6 +184,7 @@
 		42FEA68A27C10AEA00A42B00 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4237B19927C282B50067EC59 /* DisplayedFlightsModel.swift */,
 				42FEA69527C1359700A42B00 /* FlightListModel.swift */,
 			);
 			path = Model;
@@ -329,7 +343,9 @@
 				42FEA69827C16AD200A42B00 /* FlightViewModel.swift in Sources */,
 				42FEA69427C128E100A42B00 /* FlightListViewModel.swift in Sources */,
 				4237B19727C252A70067EC59 /* ErrorView.swift in Sources */,
+				4237B19D27C29C280067EC59 /* DisplayedFlightsRepository.swift in Sources */,
 				4237B19327C1BE140067EC59 /* NetworkService.swift in Sources */,
+				4237B19A27C282B50067EC59 /* DisplayedFlightsModel.swift in Sources */,
 				42FEA69227C10FA900A42B00 /* FlightOfferService.swift in Sources */,
 				42FEA69A27C1AB3400A42B00 /* LoadingView.swift in Sources */,
 				42FEA65C27C1098F00A42B00 /* FlightlyApp.swift in Sources */,

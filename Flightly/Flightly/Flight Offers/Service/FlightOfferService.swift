@@ -20,7 +20,8 @@ final class FlightOfferService {
             URLQueryItem(name: "fly_from", value: "prague_cz"),
             URLQueryItem(name: "to", value: "anywhere"),
             URLQueryItem(name: "locale", value: "en"),
-            URLQueryItem(name: "sort", value: "price"),
+            URLQueryItem(name: "price_to", value: "100"),
+            URLQueryItem(name: "sort", value: "date"),
             URLQueryItem(name: "partner", value: "skypicker"),
         ]
 

@@ -11,16 +11,14 @@ struct FlightListView: View {
 
     @ObservedObject private var viewModel = FlightListViewModel()
 
-    private let toDisplay = 5
-
     var body: some View {
         ZStack {
             NavigationView {
                 VStack(alignment: .leading) {
-                    Text("Check the cheapest flights from Prague this month")
+                    Text("Looking for a break under the 100€ from Prague next days? Check this out.")
                         .font(.subheadline)
                         .padding(.leading)
-                    List(viewModel.flightViewModelList.prefix(toDisplay), id: \.id) { flightVM in
+                    List(viewModel.flightViewModelList, id: \.id) { flightVM in
                         FlightCell(flightVM: flightVM)
                     }.onAppear {
                         viewModel.loadFlights()

@@ -18,6 +18,7 @@ struct Flight: Decodable {
     let cityTo: String
     let countryFrom: Country
     let countryTo: Country
+    let cityCodeTo: String
     let departureTime: Int
     let arrivalTime: Int
     let duration: String
@@ -29,6 +30,7 @@ struct Flight: Decodable {
         case cityTo
         case countryFrom
         case countryTo
+        case cityCodeTo
         case departureTime = "dTime"
         case arrivalTime = "aTime"
         case duration = "fly_duration"
