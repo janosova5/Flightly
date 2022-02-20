@@ -54,6 +54,6 @@ struct FlightViewModel {
     }
 
     var priceFormatted: String {
-        return String(format:  "%.01f " + currency, flight.price)
+        return String(format:  "%.01f " + (currency == "EUR" ? "€" : currency), flight.price)
     }
 }
