@@ -11,15 +11,18 @@ struct FlightViewModel {
     private var flight: Flight
     private var currency: String
 
+    var destinationImageData: Data?
+
     private var displayDateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy, H:mm"
         return dateFormatter
     }
 
-    init(flight: Flight, currency: String) {
+    init(flight: Flight, currency: String, imageData: Data?) {
         self.flight = flight
         self.currency = currency
+        self.destinationImageData = imageData
     }
 
     var id: String {
@@ -51,6 +54,6 @@ struct FlightViewModel {
     }
 
     var priceFormatted: String {
-        return String(flight.price) + " " + currency
+        return String(format:  "%.01f " + currency, flight.price)
     }
 }

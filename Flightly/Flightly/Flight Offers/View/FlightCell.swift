@@ -53,11 +53,13 @@ struct FlightCell: View {
                             .font(.headline)
                     }
                 }
-                Image("placeholder")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(10)
-                    .padding([.top, .bottom])
+                if let imageData = flightVM.destinationImageData, let image = UIImage(data: imageData) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(6)
+                        .padding([.top, .bottom])
+                }
             }
         }
     }
