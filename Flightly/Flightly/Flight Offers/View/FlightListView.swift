@@ -24,11 +24,14 @@ struct FlightListView: View {
                         FlightCell(flightVM: flightVM)
                     }.onAppear {
                         viewModel.loadFlights()
-                    }.navigationBarTitle("Flight offers")
+                    }.navigationBarTitle("Where to?")
                 }.background(.cyan)
             }
             if viewModel.isLoading {
                 LoadingView()
+            }
+            if let error = viewModel.error {
+                ErrorView(message: error.message())
             }
         }
     }

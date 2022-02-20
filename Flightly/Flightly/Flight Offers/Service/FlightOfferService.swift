@@ -27,7 +27,7 @@ final class FlightOfferService {
         return components
     }
 
-    func loadFlights(startingByDate: String, endingByDate: String) -> AnyPublisher<FlightDataList, Error> {
+    func loadFlights(startingByDate: String, endingByDate: String) -> AnyPublisher<FlightDataList, KiwiError> {
         let datesQueryItems = [
             URLQueryItem(name: "dateFrom", value: startingByDate),
             URLQueryItem(name: "dateTo", value: endingByDate)
@@ -35,13 +35,12 @@ final class FlightOfferService {
         var updatedComponents = components
         updatedComponents.queryItems?.append(contentsOf: datesQueryItems)
 
-        // TODO: handle error
-        //guard let url = updatedComponents.url else { return error }
-        return URLSession.shared.dataTaskPublisher(for: updatedComponents.url!)
-            .map { $0.data }
-            .decode(type: FlightDataList.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+        guard let url = updatedComponents.url else {
+            return Fail(error: .sessionFailed(error: URLError(.badURL)))
+                .receive(on: DispatchQueue.main)
+                .eraseToAnyPublisher()
+        }
+
+        return NetworkService.request(url: url)
     }
-    
 }
