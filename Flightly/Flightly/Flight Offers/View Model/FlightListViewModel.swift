@@ -73,6 +73,9 @@ final class FlightListViewModel: ObservableObject {
         if let url = URL(string: baseUrl + destinationString + ".jpg"), let data = try? Data(contentsOf: url) {
             return data
         }
+        if let url = URL(string: baseUrl + "photos.jpg"), let data = try? Data(contentsOf: url) {
+            return data
+        }
         return nil
     }
 
