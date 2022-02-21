@@ -14,7 +14,7 @@
 		4237B19F27C37FFB0067EC59 /* Dimensions+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B19E27C37FFB0067EC59 /* Dimensions+Theme.swift */; };
 		4237B1A827C395AD0067EC59 /* UniqueDestinationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B1A727C395AD0067EC59 /* UniqueDestinationFilter.swift */; };
 		4237B1D527C3C7790067EC59 /* DisplayedDestinationsRepositoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B1D427C3C7790067EC59 /* DisplayedDestinationsRepositoryDummy.swift */; };
-		4237B1DD27C3CEC70067EC59 /* FlightOffersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B1DC27C3CEC70067EC59 /* FlightOffersTests.swift */; };
+		4237B1DF27C3D2890067EC59 /* FlightOffersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237B1DE27C3D2890067EC59 /* FlightOffersTests.swift */; };
 		42FEA65C27C1098F00A42B00 /* FlightlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FEA65B27C1098F00A42B00 /* FlightlyApp.swift */; };
 		42FEA65E27C1098F00A42B00 /* FlightListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FEA65D27C1098F00A42B00 /* FlightListView.swift */; };
 		42FEA66027C1099400A42B00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42FEA65F27C1099400A42B00 /* Assets.xcassets */; };
@@ -46,7 +46,7 @@
 		4237B1A727C395AD0067EC59 /* UniqueDestinationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueDestinationFilter.swift; sourceTree = "<group>"; };
 		4237B1C727C3C5160067EC59 /* FlightlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4237B1D427C3C7790067EC59 /* DisplayedDestinationsRepositoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayedDestinationsRepositoryDummy.swift; sourceTree = "<group>"; };
-		4237B1DC27C3CEC70067EC59 /* FlightOffersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightOffersTests.swift; sourceTree = SOURCE_ROOT; };
+		4237B1DE27C3D2890067EC59 /* FlightOffersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightOffersTests.swift; sourceTree = "<group>"; };
 		42FEA65827C1098F00A42B00 /* Flightly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flightly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FEA65B27C1098F00A42B00 /* FlightlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightlyApp.swift; sourceTree = "<group>"; };
 		42FEA65D27C1098F00A42B00 /* FlightListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightListView.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 		4237B1C827C3C5160067EC59 /* FlightlyTests */ = {
 			isa = PBXGroup;
 			children = (
-				4237B1DC27C3CEC70067EC59 /* FlightOffersTests.swift */,
+				4237B1DE27C3D2890067EC59 /* FlightOffersTests.swift */,
 				4237B1D427C3C7790067EC59 /* DisplayedDestinationsRepositoryDummy.swift */,
 			);
 			path = FlightlyTests;
@@ -356,7 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4237B1DD27C3CEC70067EC59 /* FlightOffersTests.swift in Sources */,
+				4237B1DF27C3D2890067EC59 /* FlightOffersTests.swift in Sources */,
 				4237B1D527C3C7790067EC59 /* DisplayedDestinationsRepositoryDummy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

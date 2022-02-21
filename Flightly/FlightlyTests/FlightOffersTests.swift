@@ -9,8 +9,8 @@ import XCTest
 @testable import Flightly
 
 class FlightOffersTests: XCTestCase {
-    
-    func test_given_emptyRepository_whenAppStartsFirstTime_thenDisplayFlightsAndSaveDestinationsAndDate() throws {
+
+    func test_given_emptyRepository_whenAppStartsFirstTime_thenDisplayFlightsAndSaveDestinationsAndDate() {
         // given
         let flightDataList = FlightDataList(currency: "EUR", data: mockFlights)
         let repository = DisplayedDestinationsRepositoryDummy()
@@ -23,8 +23,8 @@ class FlightOffersTests: XCTestCase {
         XCTAssertEqual(repository.getData()?.destinationsCityCodes, flightsToDisplay.map { $0.cityCodeTo })
         XCTAssertEqual(repository.getData()?.dateOfUpdate, today)
     }
-    
-    func test_given_dataInRepository_whenDayChange_thenDisplayDifferentDestinationsAndSaveNewDestinationsAndDate() throws {
+
+    func test_given_dataInRepository_whenDayChange_thenDisplayDifferentDestinationsAndSaveNewDestinationsAndDate() {
         // given
         let flightDataList = FlightDataList(currency: "EUR", data: mockFlights)
         let repository = DisplayedDestinationsRepositoryDummy()
@@ -41,16 +41,16 @@ class FlightOffersTests: XCTestCase {
         XCTAssertEqual(repository.getData()?.destinationsCityCodes, flightsToDisplay.map { $0.cityCodeTo })
         XCTAssertEqual(repository.getData()?.dateOfUpdate, nextDay)
     }
-    
+                                                    
     private var today: DateComponents {
         return Calendar.current.dateComponents([.day, .month, .year], from: .now)
     }
-    
+
     private var nextDay: DateComponents {
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today.date ?? .now)
         return Calendar.current.dateComponents([.day, .month, .year], from: tomorrow ?? .distantFuture)
     }
-    
+
     private var mockFlights: [Flight] {
         return [
             makeFlight(id: "1", cityTo: "Madrid", countryTo: Country(code: "ES", name: "Spain"), cityCodeTo: "MAD"),
@@ -65,7 +65,7 @@ class FlightOffersTests: XCTestCase {
             makeFlight(id: "10", cityTo: "Frankfurt", countryTo: Country(code: "DE", name: "Germany"), cityCodeTo: "FRA")
         ]
     }
-    
+
     private func makeFlight(
         id: String,
         cityFrom: String = "Prague",
@@ -91,5 +91,5 @@ class FlightOffersTests: XCTestCase {
             price: price
         )
     }
-    
+
 }
