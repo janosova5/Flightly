@@ -1,5 +1,5 @@
 //
-//  FlightOffers.swift
+//  FlightOffersTests.swift
 //  FlightlyTests
 //
 //  Created by Lenka Janosova on 21/02/2022.
@@ -8,8 +8,8 @@
 import XCTest
 @testable import Flightly
 
-class FlightOffers: XCTestCase {
-
+class FlightOffersTests: XCTestCase {
+    
     func test_given_emptyRepository_whenAppStartsFirstTime_thenDisplayFlightsAndSaveDestinationsAndDate() throws {
         // given
         let flightDataList = FlightDataList(currency: "EUR", data: mockFlights)
@@ -23,7 +23,7 @@ class FlightOffers: XCTestCase {
         XCTAssertEqual(repository.getData()?.destinationsCityCodes, flightsToDisplay.map { $0.cityCodeTo })
         XCTAssertEqual(repository.getData()?.dateOfUpdate, today)
     }
-
+    
     func test_given_dataInRepository_whenDayChange_thenDisplayDifferentDestinationsAndSaveNewDestinationsAndDate() throws {
         // given
         let flightDataList = FlightDataList(currency: "EUR", data: mockFlights)
@@ -41,7 +41,7 @@ class FlightOffers: XCTestCase {
         XCTAssertEqual(repository.getData()?.destinationsCityCodes, flightsToDisplay.map { $0.cityCodeTo })
         XCTAssertEqual(repository.getData()?.dateOfUpdate, nextDay)
     }
-
+    
     private var today: DateComponents {
         return Calendar.current.dateComponents([.day, .month, .year], from: .now)
     }
@@ -91,5 +91,5 @@ class FlightOffers: XCTestCase {
             price: price
         )
     }
-
+    
 }
