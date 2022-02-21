@@ -39,9 +39,3 @@ struct FlightListView: View {
         }
     }
 }
-
-//struct FlightList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FlightListView()
-//    }
-//}
