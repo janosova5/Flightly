@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct FlightlyApp: App {
+    
+    let service = FlightOfferService()
+    let repository = DisplayedDestinationsRepositoryImpl()
+    
     var body: some Scene {
         WindowGroup {
-            FlightListView()
+            FlightListView(viewModel: FlightListViewModel(
+                flightOfferService: service,
+                displayedFlightsRepository: repository)
+            )
         }
     }
 }

@@ -1,22 +1,13 @@
 //
-//  FlightlyTests.swift
+//  FlightOffers.swift
 //  FlightlyTests
 //
-//  Created by Lenka Janosova on 19/02/2022.
+//  Created by Lenka Janosova on 21/02/2022.
 //
 
 import XCTest
-@testable import Flightly
 
-class FlightlyTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+class FlightOffers: XCTestCase {
 
     func testExample() throws {
         // This is an example of a functional test case.

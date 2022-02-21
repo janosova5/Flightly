@@ -9,7 +9,11 @@ import SwiftUI
 
 struct FlightListView: View {
 
-    @ObservedObject private var viewModel = FlightListViewModel()
+    @ObservedObject private var viewModel: FlightListViewModel
+
+    init(viewModel: FlightListViewModel) {
+        self.viewModel = viewModel
+    }
 
     var body: some View {
         ZStack {
@@ -23,6 +27,7 @@ struct FlightListView: View {
                     }.onAppear {
                         viewModel.loadFlights()
                     }.navigationBarTitle("Where to?")
+                        .listStyle(.insetGrouped)
                 }.background(.cyan)
             }
             if viewModel.isLoading {
@@ -35,8 +40,8 @@ struct FlightListView: View {
     }
 }
 
-struct FlightList_Previews: PreviewProvider {
-    static var previews: some View {
-        FlightListView()
-    }
-}
+//struct FlightList_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FlightListView()
+//    }
+//}

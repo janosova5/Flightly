@@ -12,19 +12,19 @@ struct FlightCell: View {
 
     var body: some View {
         VStack {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: .vSpaceSmall) {
                 HStack(alignment: .center) {
                     Image("plane")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 25, height: 25, alignment: .center)
+                        .frame(width: CGSize.smallIcon.width, height: CGSize.smallIcon.height, alignment: .center)
                     Text(flightVM.destinationFrom)
                         .font(.headline)
                     Spacer()
                     Image("right-arrow")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 35, alignment: .center)
+                        .frame(width: CGSize.arrowIcon.width, height: CGSize.arrowIcon.height, alignment: .center)
                     Spacer()
                     Text(flightVM.destinationTo)
                         .font(.headline)
@@ -35,30 +35,30 @@ struct FlightCell: View {
                     Text(flightVM.arrivalTimeFormatted)
                 }
             }
-            HStack(alignment: .center, spacing: 16) {
+            HStack(alignment: .center, spacing: .hSpaceNormal) {
                 VStack(alignment: .leading) {
-                    HStack(alignment: .center, spacing: 8) {
+                    HStack(alignment: .center, spacing: .hSpaceSmall) {
                         Image("duration")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 25, height: 25, alignment: .center)
+                            .frame(width: CGSize.smallIcon.width, height: CGSize.smallIcon.height, alignment: .leading)
                         Text(flightVM.duration)
                     }
-                    HStack(alignment: .center, spacing: 8) {
+                    HStack(alignment: .center, spacing: .hSpaceSmall) {
                         Image("price")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 25, height: 25, alignment: .center)
+                            .frame(width: CGSize.smallIcon.width, height: CGSize.smallIcon.height, alignment: .leading)
                         Text(flightVM.priceFormatted)
                             .font(.headline)
                     }
-                }
+                }.padding(.leading)
                 if let imageData = flightVM.destinationImageData, let image = UIImage(data: imageData) {
                     Image(uiImage: image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .cornerRadius(6)
-                        .padding([.top, .bottom])
+                        .cornerRadius(.imageCornerRadius)
+                        .padding([.top, .bottom, .leading])
                 }
             }
         }
