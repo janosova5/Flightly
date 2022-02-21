@@ -10,7 +10,7 @@ import XCTest
 
 class FlightOffersTests: XCTestCase {
 
-    func test_given_emptyRepository_whenAppStartsFirstTime_thenDisplayFlightsAndSaveDestinationsAndDate() {
+    func test_given_emptyRepository_when_appStartsFirstTime_then_displayFlightsAndSaveDestinationsAndDate() {
         // given
         let flightDataList = FlightDataList(currency: "EUR", data: mockFlights)
         let repository = DisplayedDestinationsRepositoryDummy()
@@ -24,7 +24,7 @@ class FlightOffersTests: XCTestCase {
         XCTAssertEqual(repository.getData()?.dateOfUpdate, today)
     }
 
-    func test_given_dataInRepository_whenDayChange_thenDisplayDifferentDestinationsAndSaveNewDestinationsAndDate() {
+    func test_given_dataInRepository_when_dayChange_then_displayDifferentDestinationsAndSaveNewDestinationsAndDate() {
         // given
         let flightDataList = FlightDataList(currency: "EUR", data: mockFlights)
         let repository = DisplayedDestinationsRepositoryDummy()
